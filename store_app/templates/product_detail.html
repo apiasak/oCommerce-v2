@@ -1,0 +1,47 @@
+{% extends 'base.html' %} 
+{% load staticfiles %} 
+
+{% block page %}
+    <div class="row">
+        <!-- Product detail section -->
+        <div class="col-md-8">
+            <div class="thumbnail">
+                <img src="{{ MEDIA_URL }}{{ product.photo }}" alt="">
+                <div class="detail">
+                    <h4 class="pull-right">{{ product.price }}</h4>
+                    <h4>{{ product.name }}</h4>
+                    <p>{{ product.detail }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add to cart and purchase section -->
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <div class="detail">
+                    {% if user and not user.is_anonymous %}
+                    <h4>เพิ่มสินค้าลงตะกร้าหรือสั่งซื้อ</h4>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="quantity">จำนวนสั่งซื้อ</label>
+                            <select class="form-control" name="quantity" id="quantity">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-success">เพิ่มสินค้าลงตะกร้า</button>
+                    </form>
+                    {% else %}
+                        <h4>กรุณาเข้าสู่ระบบเพื่อทำการสั่งซื้อ</h4>
+                        <a href="{% url 'social:begin' 'facebook' %}?next={{request.path}}" 
+                        class="btn btn-primary">Login with Facebook</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

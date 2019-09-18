@@ -18,9 +18,19 @@ from django.urls import include, path
 
 from store_app import views
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('oauth/', include('social_django.urls', namespace='social')),
     path('admin/', admin.site.urls),
-]
+    path('', views.home, name='home'),
+    path('product/<int:id>', views.product_detail, name='product_detail'),
+    path('search/', views.product_search, name='product_search'),
+    path('oauth/', include('social_django.urls', namespace='social')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('my_cart/', views.my_cart, name='my_cart'),
+    path('my_order/', views.my_order, name='my_order'),
+    path('delete_order_detail/<int:id>/', views.delete_order_detail, name='delete_order_detail'),
+    
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -25,7 +25,7 @@ SECRET_KEY = 'x52j-zrlo!r^=1*wv-=ivt+jlv8^z_s@$^g)(2jye_9vek8za*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','b9f10bca.ngrok.io']
+ALLOWED_HOSTS = ['127.0.0.1','b9f10bca.ngrok.io','.localhost']
 
 
 # Application definition
@@ -69,6 +69,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
                 'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
             ],
@@ -161,4 +162,4 @@ SOCIAL_AUTH_PIPELINE = (
     'store_app.pipeline.save_customer',
 )
 
-SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
+#SOCIAL_AUTH_REDIRECT_IS_HTTPS = True

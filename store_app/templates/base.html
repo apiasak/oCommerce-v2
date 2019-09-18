@@ -42,7 +42,8 @@
                                 {% static 'img/photo.png' %} 
                                 {% endif %}" class="img-circle" height="22px" width="22px" /> <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            
+                            <li><a href="{% url 'my_cart' %}">ตะกร้าสินค้า</a></li>
+                            <li><a href="{% url 'my_order' %}">ออเดอร์</a></li>
                             <li><a href="#">ข้อมูลส่วนตัว</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="{% url 'logout' %}?next={{request.path}}"> Logout</a></li>
