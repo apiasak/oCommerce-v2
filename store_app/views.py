@@ -54,8 +54,11 @@ def product_detail(request, id):
     return render(request, 'product_detail.html', {"product" : product })
 
 def product_search(request):
-    products = Product.objects.filter(name__contains = request.GET['product_search'])
-    return render(request, 'index.html', {"products" : products})
+    if 'product_search' in request.GET:
+        products = Product.objects.filter(name__contains = request.GET['product_search'])
+        return render(request, 'index.html', {"products" : products})
+    else:
+        return redirect('home')
 
 @login_required(login_url="/")
 def my_cart(request):
