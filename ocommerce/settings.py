@@ -25,7 +25,7 @@ SECRET_KEY = 'x52j-zrlo!r^=1*wv-=ivt+jlv8^z_s@$^g)(2jye_9vek8za*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','b9f10bca.ngrok.io','.localhost']
+ALLOWED_HOSTS = ['127.0.0.1','b9f10bca.ngrok.io','.localhost','aqueous-coast-52695.herokuapp.com']
 
 
 # Application definition
