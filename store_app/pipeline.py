@@ -10,4 +10,8 @@ def save_customer(backend, user, response, *args, **kwargs):
         customer.email = response.get('email')
         print(response.get('email'))
         customer.photo = 'http://graph.facebook.com/%s/picture?type=large' % response.get('id')
-        customer.save()
+
+        try:
+            customer.save()
+        except Exception as err:
+            print(err)
